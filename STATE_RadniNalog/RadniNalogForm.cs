@@ -23,6 +23,8 @@ namespace STATE_RadniNalog
             _radniNalog = new RadniNalog();
 
             txtStatus.Text = _radniNalog.getState().ToString();
+
+            refreshButtons();
         }
 
         private void btnZakljucaj_Click(object sender, EventArgs e)
@@ -31,6 +33,8 @@ namespace STATE_RadniNalog
             txtDatumKreiranja.Text = _radniNalog.DatumKreiranja.ToString();
 
             txtStatus.Text = _radniNalog.getState().ToString();
+
+            refreshButtons();
         }
 
         private void btnPredajNalog_Click(object sender, EventArgs e)
@@ -38,6 +42,8 @@ namespace STATE_RadniNalog
             _radniNalog.PredajUProizvodnju(dtpDatumPredaje.Value);
 
             txtStatus.Text = _radniNalog.getState().ToString();
+
+            refreshButtons();
         }
 
         private void btnZapocniProizvodnju_Click(object sender, EventArgs e)
@@ -45,6 +51,8 @@ namespace STATE_RadniNalog
             _radniNalog.ZapocniProizvodnju(dtpDatumPocetka.Value);
 
             txtStatus.Text = _radniNalog.getState().ToString();
+
+            refreshButtons();
         }
 
         private void btnDovrsiProizvodnju_Click(object sender, EventArgs e)
@@ -52,6 +60,8 @@ namespace STATE_RadniNalog
             _radniNalog.DovrsiProizvodnju(dtpDatumDovrsetka.Value);
 
             txtStatus.Text = _radniNalog.getState().ToString();
+
+            refreshButtons();
         }
 
         private void btnOtkaziNalog_Click(object sender, EventArgs e)
@@ -59,6 +69,19 @@ namespace STATE_RadniNalog
             _radniNalog.OtkaziNalog();
 
             txtStatus.Text = _radniNalog.getState().ToString();
+
+            refreshButtons();
+        }
+
+        public void refreshButtons()
+        {
+            ProjectStates state = _radniNalog.StateManager.CurrentState;
+
+            btnDovrsiProizvodnju.Enabled = state == ProjectStates.ProductionStarted;
+            btnZapocniProizvodnju.Enabled = state == ProjectStates.PutIntoProduction;
+            btnPredajNalog.Enabled = state == ProjectStates.OrderLocked;
+            btnZakljucaj.Enabled = state == ProjectStates.OrderCreated || state == ProjectStates.ProductionCanceled || state == ProjectStates.ProductionFinished;
+            btnOtkaziNalog.Enabled = state == ProjectStates.OrderLocked;
         }
     }
 }
