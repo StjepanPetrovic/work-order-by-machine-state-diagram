@@ -44,5 +44,10 @@ namespace STATE_RadniNalog
         {
             StateManager.MakeTransition(ActivationEvents.GivingUpProduction);
         }
+
+        public ProjectStates getState()
+        {
+            return StateManager.CurrentState;
+        }
     }
 }
