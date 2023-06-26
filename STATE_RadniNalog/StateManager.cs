@@ -23,9 +23,11 @@ namespace STATE_RadniNalog
 
             allowedTransitions.Add(new Transition(ProjectStates.OrderCreated, ActivationEvents.AllItemsAddedInOrder), ProjectStates.OrderLocked);
             allowedTransitions.Add(new Transition(ProjectStates.OrderLocked, ActivationEvents.ProductionCommited), ProjectStates.PutIntoProduction);
-            allowedTransitions.Add(new Transition(ProjectStates.OrderLocked, ActivationEvents.ProductionCommited), ProjectStates.ProductionCanceled);
+            allowedTransitions.Add(new Transition(ProjectStates.OrderLocked, ActivationEvents.GivingUpProduction), ProjectStates.ProductionCanceled);
             allowedTransitions.Add(new Transition(ProjectStates.PutIntoProduction, ActivationEvents.OrderTaken), ProjectStates.ProductionStarted);
             allowedTransitions.Add(new Transition(ProjectStates.ProductionStarted, ActivationEvents.AllItemsFinished), ProjectStates.ProductionFinished);
+            allowedTransitions.Add(new Transition(ProjectStates.ProductionFinished, ActivationEvents.AllItemsAddedInOrder), ProjectStates.OrderLocked);
+            allowedTransitions.Add(new Transition(ProjectStates.ProductionCanceled, ActivationEvents.AllItemsAddedInOrder), ProjectStates.OrderLocked);
         }
 
         public void MakeTransition(ActivationEvents activationEvent)
