@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActivationEvents.cs" />
+    <Compile Include="ProjectStates.cs" />
     <Compile Include="RadniNalogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +58,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RadniNalog.cs" />
+    <Compile Include="Transition.cs" />
     <EmbeddedResource Include="RadniNalogForm.resx">
       <DependentUpon>RadniNalogForm.cs</DependentUpon>
     </EmbeddedResource>
