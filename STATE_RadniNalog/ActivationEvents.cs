@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STATE_RadniNalog
 {
-    enum ActivationEvents
+    public enum ActivationEvents
     {
         AllItemsAddedInOrder,
         ProductionCommited,

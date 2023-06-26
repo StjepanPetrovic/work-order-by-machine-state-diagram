@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STATE_RadniNalog
 {
-	enum ProjectStates
+	public enum ProjectStates
 	{
 		OrderCreated,
 		OrderLocked,

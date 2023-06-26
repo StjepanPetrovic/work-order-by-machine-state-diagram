@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace STATE_RadniNalog
 {
-    internal class StateManager
+    public class StateManager
     {
         public ProjectStates CurrentState { get; set; }
         private Dictionary<Transition, ProjectStates> allowedTransitions;
